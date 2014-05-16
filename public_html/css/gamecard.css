@@ -21,27 +21,27 @@ div.half
 }
 div.small
 {
-    height: 12vh;
+    /*height: 5em;*/
     /*border: solid 1px;*/
-    font-size: 10vh;
+    font-size: 4em;
     font-family: sans-serif;
     font-weight: bolder;
     vertical-align: middle;
 }
 div.smaller
 {
-    height: 12vh;
+    /*height: 4em;*/
     border: solid 1px;
-    font-size: 6vh;
+    font-size: 3em;
     font-family: sans-serif;
     font-weight: bolder;
     vertical-align: middle;
 }
 div.large
 {
-    height: 35vh;
+    /*height: 35vh;*/
     /*border: solid 1px;*/
-    font-size: 28vh;
+    font-size: 10em;
     font-family: sans-serif;
     font-weight: bolder;
     vertical-align: middle;
@@ -50,8 +50,8 @@ div.top
 {
     position: absolute;
     top: 0;
-    width: 99vw;
-    font-size: 6vh;
+    width: 99%;
+    font-size: 3em;
     height: 99vh;
     background-color: white;
     text-align: center;
@@ -60,7 +60,7 @@ div.time
 {
     position: absolute;
     bottom: 0;
-    width: 99vw;
+    width: 99%;
     background-color: white;
     text-align: center;
 }
@@ -68,7 +68,7 @@ div.time
 {
     display: inline-block;
     width: 30% !important;
-    margin: .5vw;
+    /*margin: .5vw;*/
 }
 .tiny
 {
@@ -80,13 +80,13 @@ input[type="text"]
 }
 input[type="text"].smaller
 {
-    font-size: 6vh;
-    margin: 1.5vh 0;
+    font-size: 3em;
+    margin: 0.5em 0;
 }
 select
 {
-    font-size: 6vh;
-    margin: 1.5vh 0;
+    font-size: 3em;
+    margin: 0.5em 0;
 }
 table
 {
