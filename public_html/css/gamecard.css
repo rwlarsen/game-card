@@ -32,7 +32,7 @@ div.smaller
 {
     /*height: 4em;*/
     border: solid 1px;
-    font-size: 3em;
+    font-size: 300%;
     font-family: sans-serif;
     font-weight: bolder;
     vertical-align: middle;
@@ -41,7 +41,7 @@ div.large
 {
     /*height: 35vh;*/
     /*border: solid 1px;*/
-    font-size: 10em;
+    font-size: 1000%;
     font-family: sans-serif;
     font-weight: bolder;
     vertical-align: middle;
@@ -51,8 +51,8 @@ div.top
     position: absolute;
     top: 0;
     width: 99%;
-    font-size: 3em;
-    height: 99vh;
+    font-size: 300%;
+    height: 99%;
     background-color: white;
     text-align: center;
 }
@@ -72,21 +72,19 @@ div.time
 }
 .tiny
 {
-    font-size: 3vh;
+    font-size: 300%;
 }
 input[type="text"]
 {
-    font-size: 9vh;
+    font-size: 900%;
 }
 input[type="text"].smaller
 {
-    font-size: 3em;
-    margin: 0.5em 0;
+    font-size: 300%;
 }
 select
 {
-    font-size: 3em;
-    margin: 0.5em 0;
+    font-size: 300%;
 }
 table
 {
