@@ -1,0 +1,171 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : May 14, 2014, 1:44:45 PM
+    Author     : Bob
+*/
+body
+{
+    margin: 0;
+    padding: 0;
+    text-align: center;
+}
+div.half
+{
+    display: inline-block;
+    /*border: solid black 1px;*/
+    width: 48% !important;
+}
+div.small
+{
+    height: 12vh;
+    /*border: solid 1px;*/
+    font-size: 10vh;
+    font-family: sans-serif;
+    font-weight: bolder;
+    vertical-align: middle;
+}
+div.smaller
+{
+    height: 12vh;
+    border: solid 1px;
+    font-size: 6vh;
+    font-family: sans-serif;
+    font-weight: bolder;
+    vertical-align: middle;
+}
+div.large
+{
+    height: 35vh;
+    /*border: solid 1px;*/
+    font-size: 28vh;
+    font-family: sans-serif;
+    font-weight: bolder;
+    vertical-align: middle;
+}
+div.top
+{
+    position: absolute;
+    top: 0;
+    width: 99vw;
+    font-size: 6vh;
+    height: 99vh;
+    background-color: white;
+    text-align: center;
+}
+div.time
+{
+    position: absolute;
+    bottom: 0;
+    width: 99vw;
+    background-color: white;
+    text-align: center;
+}
+.third
+{
+    display: inline-block;
+    width: 30% !important;
+    margin: .5vw;
+}
+.tiny
+{
+    font-size: 3vh;
+}
+input[type="text"]
+{
+    font-size: 9vh;
+}
+input[type="text"].smaller
+{
+    font-size: 6vh;
+    margin: 1.5vh 0;
+}
+select
+{
+    font-size: 6vh;
+    margin: 1.5vh 0;
+}
+table
+{
+    width: 100%;
+    border-collapse:collapse;
+}
+td 
+{
+    border: 1px solid black;
+}
+.green
+{
+    background-color: green;
+    color: white;
+    border-color: white;
+}
+.blue
+{
+    background-color: blue;
+    color: white;
+    border-color: white;
+}
+.purple
+{
+    background-color: purple;
+    color: white;
+    border-color: white;
+}
+.orange
+{
+    background-color: orange;
+    color: black;
+    border-color: black;
+}
+.brown
+{
+    background-color: brown;
+    color: white;
+    border-color: white;
+}
+.black
+{
+    background-color: black;
+    color: white;
+    border-color: white;
+}
+.red
+{
+    background-color: red;
+    color: white;
+    border-color: white;
+}
+.yellow
+{
+    background-color: yellow;
+    color: black;
+    border-color: black;
+}
+.white
+{
+    background-color: white;
+    color: black;
+    border-color: black;
+}
+.silver
+{
+    background-color: silver;
+    color: black;
+    border-color: black;
+}
+.skyblue
+{
+    background-color: skyblue;
+    color: black;
+    border-color: black;
+}
+.pink
+{
+    background-color: pink;
+    color: black;
+    border-color: black;
+}

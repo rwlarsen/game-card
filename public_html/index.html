@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html ng-app="gameApp">
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" type="text/css" href="css/gamecard.css">
+    </head>
+    <body ng-controller="gameController">
+        <div class="half" ng-class="home.color">
+            <div class="small" ng-click="editTeam(home)">
+                {{ home.name}}
+            </div>
+            <div class="large" ng-click="editScore(home)">
+                {{ home.score}}
+            </div>
+            <div class="small" ng-click="editTimeout(home)">
+                TO: {{ home.timeoutsRemaining}}
+            </div>
+            <div class="small" ng-click="editFoul(home)">
+                FOUL
+            </div>
+        </div>
+        <div class="half" ng-class="visitor.color">
+            <div class="small" ng-click="editTeam(visitor)">
+                {{ visitor.name}}
+            </div>
+            <div class="large" ng-click="editScore(visitor)">
+                {{ visitor.score}}
+            </div>
+            <div class="small" ng-click="editTimeout(visitor)">
+                TO: {{ visitor.timeoutsRemaining}}
+            </div>
+            <div class="small" ng-click="editFoul(visitor)">
+                FOUL
+            </div>
+        </div>
+        <div class="small" ng-click="quarterEditor = true">
+            Quarter: {{ quarter}}
+        </div>
+        <div class="small" ng-click="gameEditor = true">
+            GAME
+        </div>
+        <div class="top" ng-show="teamEditor">
+            <div class="smaller black third" ng-click="team.color = 'black'">Black</div>
+            <div class="smaller blue third" ng-click="team.color = 'blue'">Blue</div>
+            <div class="smaller brown third" ng-click="team.color = 'brown'">Brown</div>
+            <div class="smaller green third" ng-click="team.color = 'green'">Green</div>
+            <div class="smaller orange third" ng-click="team.color = 'orange'">Orange</div>
+            <div class="smaller pink third" ng-click="team.color = 'pink'">Pink</div>
+            <div class="smaller purple third" ng-click="team.color = 'purple'">Purple</div>
+            <div class="smaller red third" ng-click="team.color = 'red'">Red</div>
+            <div class="smaller silver third" ng-click="team.color = 'silver'">Silver</div>
+            <div class="smaller skyblue third" ng-click="team.color = 'skyblue'">Sky Blue</div>
+            <div class="smaller white third" ng-click="team.color = 'white'">White</div>
+            <div class="smaller yellow third" ng-click="team.color = 'yellow'">Yellow</div>
+            <input type="text" class="small" ng-class="team.color" ng-model="team.name" />
+            <div class="small" ng-click="teamEditor = false">Save</div>
+        </div>
+        <div class="top" ng-show="scoreEditor">
+            <div class="small third" ng-click="addScore(2)">2</div>
+            <div class="small third" ng-click="addScore(3)">3</div><br />
+            <div class="small third" ng-click="addScore(6)">6</div>
+            <div class="small third" ng-click="addScore(7)">7</div>
+            <div class="small third" ng-click="addScore(8)">8</div>
+        </div>
+        <div class="top" ng-show="gameEditor">
+            <div class="half tiny">
+                {{ home.name}}
+                <table>
+                    <caption>Score</caption>
+                    <tr ng-repeat="score in home.scores">
+                        <td>{{ score.quarter}}</td>
+                        <td>{{ score.time}}</td>
+                        <td>{{ score.score}}</td>
+                    </tr>
+                </table>
+                <table>
+                    <caption>Timeouts</caption>
+                    <tr ng-repeat="timeout in home.timeouts">
+                        <td>{{ timeout.quarter}}</td>
+                        <td>{{ timeout.time}}</td>
+                    </tr>
+                </table>
+                <table>
+                    <caption>Fouls</caption>
+                    <tr ng-repeat="foul in home.fouls">
+                        <td>{{ foul.foul}}</td>
+                        <td>{{ foul.quarter}}</td>
+                        <td>{{ foul.time}}</td>
+                        <td>{{ foul.number}}</td>
+                    </tr>
+                </table>
+            </div>
+            <div class="half tiny">
+                {{ visitor.name}}
+                <table>
+                    <caption>Score</caption>
+                    <tr ng-repeat="score in visitor.scores">
+                        <td>{{ score.quarter}}</td>
+                        <td>{{ score.time}}</td>
+                        <td>{{ score.score}}</td>
+                    </tr>
+                </table>
+                <table>
+                    <caption>Timeouts</caption>
+                    <tr ng-repeat="timeout in visitor.timeouts">
+                        <td>{{ timeout.quarter}}</td>
+                        <td>{{ timeout.time}}</td>
+                    </tr>
+                </table>
+                <table>
+                    <caption>Fouls</caption>
+                    <tr ng-repeat="foul in visitor.fouls">
+                        <td>{{ foul.foul}}</td>
+                        <td>{{ foul.quarter}}</td>
+                        <td>{{ foul.time}}</td>
+                        <td>{{ foul.number}}</td>
+                    </tr>
+                </table>
+            </div>
+            <div class="small" ng-click="gameEditor = false">
+                Close
+            </div>
+        </div>
+        <div class="top" ng-show="timeoutEditor">
+            <div class="small" ng-click="addTimeout()">Timeout</div>
+        </div>
+        <div class="top" ng-show="foulEditor">
+            <div class="half">
+                <div class="small">Foul</div>
+                <div class="small"><input size="3" maxlength="3" type="text" ng-model="foul" /></div>
+            </div>
+            <div class="half">
+                <div class="small">Num</div>
+                <div class="small"><input size="3" maxlength="3" type="text" ng-model="number" /></div>
+            </div>
+            <div class="small" ng-click="addFoul()">
+                Foul
+            </div>
+        </div>
+        <div class="top" ng-show="quarterEditor">
+            <div class="half">
+                <select ng-model="home.tossChoice.choice" ng-disabled="quarter != 0">
+                    <option>Kick</option>
+                    <option>Receive</option>
+                    <option>Defer</option>
+                </select>
+                <select ng-model="home.tossChoice.direction" ng-disabled="quarter != 0">
+                    <option>KTC</option>
+                    <option>KFC</option>
+                </select>
+            </div>
+            <div class="half">
+                <select ng-model="visitor.tossChoice.choice" ng-disabled="quarter != 0">
+                    <option>Kick</option>
+                    <option>Receive</option>
+                    <option>Defer</option>
+                </select>
+                <select ng-model="visitor.tossChoice.direction" ng-disabled="quarter != 0">
+                    <option>KTC</option>
+                    <option>KFC</option>
+                </select>
+            </div>
+            <select ng-model="firstQuarter.down" ng-disabled="quarter != 1">
+                <option>1</option>
+                <option>2</option>
+                <option>3</option>
+                <option>4</option>
+            </select> &amp;
+            <input class="smaller" type="text" maxlength="2" size="1" ng-model="firstQuarter.distance" ng-disabled="quarter != 1"/>
+            on
+            <input class="smaller" type="text" maxlength="2" size="1" ng-model="firstQuarter.yardLine" ng-disabled="quarter != 1"/>
+            <select ng-model="firstQuarter.direction" ng-disabled="quarter != 1">
+                <option>in</option>
+                <option>out</option>
+            </select>
+            <div class="half">
+                <select ng-model="home.halfChoice.direction" ng-disabled="quarter != 2">
+                    <option>Kick</option>
+                    <option>Receive</option>
+                </select>
+                <select ng-model="home.halfChoice.direction" ng-disabled="quarter != 2">
+                    <option>KTC</option>
+                    <option>KFC</option>
+                </select>
+            </div>
+            <div class="half">
+                <select ng-model="visitor.halfChoice.direction" ng-disabled="quarter != 2">
+                    <option>Kick</option>
+                    <option>Receive</option>
+                </select>
+                <select ng-model="visitor.halfChoice.direction" ng-disabled="quarter != 2">
+                    <option>KTC</option>
+                    <option>KFC</option>
+                </select>
+            </div>
+            <select ng-model="thirdQuarter.down" ng-disabled="quarter != 3">
+                <option>1</option>
+                <option>2</option>
+                <option>3</option>
+                <option>4</option>
+            </select> &amp;
+            <input class="smaller" type="text" maxlength="2" size="1" ng-model="thirdQuarter.distance" ng-disabled="quarter != 3"/>
+            on
+            <input class="smaller" type="text" maxlength="2" size="1" ng-model="thirdQuarter.yardLine" ng-disabled="quarter != 3"/>
+            <select ng-model="thirdQuarter.direction" ng-disabled="quarter != 3">
+                <option>in</option>
+                <option>out</option>
+            </select>
+            <div class="half">
+                <select ng-model="home.ot1Choice" ng-disabled="quarter != 4">
+                    <option>Offense</option>
+                    <option>Defense</option>
+                    <option>At Clock</option>
+                    <option>No Clock</option>
+                </select>
+            </div>
+            <div class="half">
+                <select ng-model="visitor.ot1Choice" ng-disabled="quarter != 4">
+                    <option>Offense</option>
+                    <option>Defense</option>
+                    <option>At Clock</option>
+                    <option>No Clock</option>
+                </select>
+            </div>
+            <div class="half">
+                <select ng-model="home.ot2Choice" ng-disabled="quarter != 5">
+                    <option>Offense</option>
+                    <option>Defense</option>
+                    <option>At Clock</option>
+                    <option>No Clock</option>
+                </select>
+            </div>
+            <div class="half">
+                <select ng-model="visitor.ot2Choice" ng-disabled="quarter != 5">
+                    <option>Offense</option>
+                    <option>Defense</option>
+                    <option>At Clock</option>
+                    <option>No Clock</option>
+                </select>
+            </div>
+            <div class="small" ng-click="nextQuarter()">
+                Quarter: {{ quarter }}
+            </div>
+        </div>
+        <div class="time" ng-show="timeEditor">
+            <div class="small">{{ timeDigits[3]}}{{ timeDigits[2]}}:{{ timeDigits[1]}}{{ timeDigits[0]}}</div>
+            <div class="small third" ng-click="timeDigits.unshift(1)">1</div>
+            <div class="small third" ng-click="timeDigits.unshift(2)">2</div>
+            <div class="small third" ng-click="timeDigits.unshift(3)">3</div>
+            <div class="small third" ng-click="timeDigits.unshift(4)">4</div>
+            <div class="small third" ng-click="timeDigits.unshift(5)">5</div>
+            <div class="small third" ng-click="timeDigits.unshift(6)">6</div>
+            <div class="small third" ng-click="timeDigits.unshift(7)">7</div>
+            <div class="small third" ng-click="timeDigits.unshift(8)">8</div>
+            <div class="small third" ng-click="timeDigits.unshift(9)">9</div>
+            <div class="small third" ng-click="timeDigits.unshift(0)">0</div>
+            <div class="smaller third" ng-click="timeDigits = [0, 0, 0, 0].concat(timeDigits)">Clear</div>
+            <div class="smaller third" ng-click="timeDigits.shift()">Back</div>
+        </div>
+        <script src="js/angular.js"></script>
+        <script src="js/gamecard.js"></script>
+    </body>
+</html>
