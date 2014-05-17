@@ -59,7 +59,7 @@ and open the template in the editor.
             <div class="smaller skyblue third" ng-click="team.color = 'skyblue'">Sky Blue</div>
             <div class="smaller white third" ng-click="team.color = 'white'">White</div>
             <div class="smaller yellow third" ng-click="team.color = 'yellow'">Yellow</div>
-            <input type="text" class="small" ng-class="team.color" ng-model="team.name" />
+            <div class="small"><input type="text" class="small" ng-class="team.color" ng-model="team.name" /></div>
             <div class="small" ng-click="teamEditor = false">Save</div>
         </div>
         <div class="top" ng-show="scoreEditor">
@@ -145,126 +145,140 @@ and open the template in the editor.
             </div>
         </div>
         <div class="top" ng-show="quarterEditor">
-            <div class="half">
-                <select ng-model="home.tossChoice.choice" ng-disabled="quarter != 0">
-                    <option>Kick</option>
-                    <option>Receive</option>
-                    <option>Defer</option>
+            <div class="smaller" ng-class="{silver:quarter != 0}">
+                <div class="half">
+                    <select ng-model="home.tossChoice.choice" ng-disabled="quarter != 0">
+                        <option>Kick</option>
+                        <option>Receive</option>
+                        <option>Defer</option>
+                    </select>
+                    <select ng-model="home.tossChoice.direction" ng-disabled="quarter != 0">
+                        <option>KTC</option>
+                        <option>KFC</option>
+                    </select>
+                </div>
+                <div class="half">
+                    <select ng-model="visitor.tossChoice.choice" ng-disabled="quarter != 0">
+                        <option>Kick</option>
+                        <option>Receive</option>
+                        <option>Defer</option>
+                    </select>
+                    <select ng-model="visitor.tossChoice.direction" ng-disabled="quarter != 0">
+                        <option>KTC</option>
+                        <option>KFC</option>
+                    </select>
+                </div>
+            </div>
+            <div class="smaller" ng-class="{silver:quarter != 1}">
+                <select ng-model="firstQuarter.down" ng-disabled="quarter != 1">
+                    <option>1</option>
+                    <option>2</option>
+                    <option>3</option>
+                    <option>4</option>
                 </select>
-                <select ng-model="home.tossChoice.direction" ng-disabled="quarter != 0">
-                    <option>KTC</option>
-                    <option>KFC</option>
+                &amp;
+                <input type="text" maxlength="2" size="1" ng-model="firstQuarter.distance" ng-disabled="quarter != 1"/>
+                on
+                <input type="text" maxlength="2" size="1" ng-model="firstQuarter.yardLine" ng-disabled="quarter != 1"/>
+                <select ng-model="firstQuarter.direction" ng-disabled="quarter != 1">
+                    <option>in</option>
+                    <option>out</option>
                 </select>
             </div>
-            <div class="half">
-                <select ng-model="visitor.tossChoice.choice" ng-disabled="quarter != 0">
-                    <option>Kick</option>
-                    <option>Receive</option>
-                    <option>Defer</option>
+            <div class="smaller" ng-class="{silver:quarter != 2}">
+                <div class="half">
+                    <select ng-model="home.halfChoice.direction" ng-disabled="quarter != 2">
+                        <option>Kick</option>
+                        <option>Receive</option>
+                    </select>
+                    <select ng-model="home.halfChoice.direction" ng-disabled="quarter != 2">
+                        <option>KTC</option>
+                        <option>KFC</option>
+                    </select>
+                </div>
+                <div class="half">
+                    <select ng-model="visitor.halfChoice.direction" ng-disabled="quarter != 2">
+                        <option>Kick</option>
+                        <option>Receive</option>
+                    </select>
+                    <select ng-model="visitor.halfChoice.direction" ng-disabled="quarter != 2">
+                        <option>KTC</option>
+                        <option>KFC</option>
+                    </select>
+                </div>
+            </div>
+            <div class="smaller" ng-class="{silver:quarter != 3}">
+                <select ng-model="thirdQuarter.down" ng-disabled="quarter != 3">
+                    <option>1</option>
+                    <option>2</option>
+                    <option>3</option>
+                    <option>4</option>
                 </select>
-                <select ng-model="visitor.tossChoice.direction" ng-disabled="quarter != 0">
-                    <option>KTC</option>
-                    <option>KFC</option>
+                &amp;
+                <input class="small smaller" type="text" maxlength="2" size="1" ng-model="thirdQuarter.distance" ng-disabled="quarter != 3"/>
+                on
+                <input class="small smaller" type="text" maxlength="2" size="1" ng-model="thirdQuarter.yardLine" ng-disabled="quarter != 3"/>
+                <select ng-model="thirdQuarter.direction" ng-disabled="quarter != 3">
+                    <option>in</option>
+                    <option>out</option>
                 </select>
             </div>
-            <select ng-model="firstQuarter.down" ng-disabled="quarter != 1">
-                <option>1</option>
-                <option>2</option>
-                <option>3</option>
-                <option>4</option>
-            </select> &amp;
-            <input class="smaller" type="text" maxlength="2" size="1" ng-model="firstQuarter.distance" ng-disabled="quarter != 1"/>
-            on
-            <input class="smaller" type="text" maxlength="2" size="1" ng-model="firstQuarter.yardLine" ng-disabled="quarter != 1"/>
-            <select ng-model="firstQuarter.direction" ng-disabled="quarter != 1">
-                <option>in</option>
-                <option>out</option>
-            </select>
-            <div class="half">
-                <select ng-model="home.halfChoice.direction" ng-disabled="quarter != 2">
-                    <option>Kick</option>
-                    <option>Receive</option>
-                </select>
-                <select ng-model="home.halfChoice.direction" ng-disabled="quarter != 2">
-                    <option>KTC</option>
-                    <option>KFC</option>
-                </select>
+            <div class="smaller" ng-class="{silver:quarter != 4}">
+                <div class="half">
+                    <select ng-model="home.ot1Choice" ng-disabled="quarter != 4">
+                        <option>Offense</option>
+                        <option>Defense</option>
+                        <option>At Clock</option>
+                        <option>No Clock</option>
+                    </select>
+                </div>
+                <div class="half">
+                    <select ng-model="visitor.ot1Choice" ng-disabled="quarter != 4">
+                        <option>Offense</option>
+                        <option>Defense</option>
+                        <option>At Clock</option>
+                        <option>No Clock</option>
+                    </select>
+                </div>
             </div>
-            <div class="half">
-                <select ng-model="visitor.halfChoice.direction" ng-disabled="quarter != 2">
-                    <option>Kick</option>
-                    <option>Receive</option>
-                </select>
-                <select ng-model="visitor.halfChoice.direction" ng-disabled="quarter != 2">
-                    <option>KTC</option>
-                    <option>KFC</option>
-                </select>
+            <div class="smaller" ng-class="{silver:quarter != 5}">
+                <div class="half">
+                    <select ng-model="home.ot2Choice" ng-disabled="quarter != 5">
+                        <option>Offense</option>
+                        <option>Defense</option>
+                        <option>At Clock</option>
+                        <option>No Clock</option>
+                    </select>
+                </div>
+                <div class="half">
+                    <select ng-model="visitor.ot2Choice" ng-disabled="quarter != 5">
+                        <option>Offense</option>
+                        <option>Defense</option>
+                        <option>At Clock</option>
+                        <option>No Clock</option>
+                    </select>
+                </div>
             </div>
-            <select ng-model="thirdQuarter.down" ng-disabled="quarter != 3">
-                <option>1</option>
-                <option>2</option>
-                <option>3</option>
-                <option>4</option>
-            </select> &amp;
-            <input class="smaller" type="text" maxlength="2" size="1" ng-model="thirdQuarter.distance" ng-disabled="quarter != 3"/>
-            on
-            <input class="smaller" type="text" maxlength="2" size="1" ng-model="thirdQuarter.yardLine" ng-disabled="quarter != 3"/>
-            <select ng-model="thirdQuarter.direction" ng-disabled="quarter != 3">
-                <option>in</option>
-                <option>out</option>
-            </select>
-            <div class="half">
-                <select ng-model="home.ot1Choice" ng-disabled="quarter != 4">
-                    <option>Offense</option>
-                    <option>Defense</option>
-                    <option>At Clock</option>
-                    <option>No Clock</option>
-                </select>
+                <div class="small" ng-click="nextQuarter()">
+                    Quarter: {{ quarter}}
+                </div>
             </div>
-            <div class="half">
-                <select ng-model="visitor.ot1Choice" ng-disabled="quarter != 4">
-                    <option>Offense</option>
-                    <option>Defense</option>
-                    <option>At Clock</option>
-                    <option>No Clock</option>
-                </select>
+            <div class="time" ng-show="timeEditor">
+                <div class="small">{{ timeDigits[3]}}{{ timeDigits[2]}}:{{ timeDigits[1]}}{{ timeDigits[0]}}</div>
+                <div class="small third" ng-click="timeDigits.unshift(1)">1</div>
+                <div class="small third" ng-click="timeDigits.unshift(2)">2</div>
+                <div class="small third" ng-click="timeDigits.unshift(3)">3</div>
+                <div class="small third" ng-click="timeDigits.unshift(4)">4</div>
+                <div class="small third" ng-click="timeDigits.unshift(5)">5</div>
+                <div class="small third" ng-click="timeDigits.unshift(6)">6</div>
+                <div class="small third" ng-click="timeDigits.unshift(7)">7</div>
+                <div class="small third" ng-click="timeDigits.unshift(8)">8</div>
+                <div class="small third" ng-click="timeDigits.unshift(9)">9</div>
+                <div class="small third" ng-click="timeDigits.unshift(0)">0</div>
+                <div class="smaller third" ng-click="timeDigits = [0, 0, 0, 0].concat(timeDigits)">Clear</div>
+                <div class="smaller third" ng-click="timeDigits.shift()">Back</div>
             </div>
-            <div class="half">
-                <select ng-model="home.ot2Choice" ng-disabled="quarter != 5">
-                    <option>Offense</option>
-                    <option>Defense</option>
-                    <option>At Clock</option>
-                    <option>No Clock</option>
-                </select>
-            </div>
-            <div class="half">
-                <select ng-model="visitor.ot2Choice" ng-disabled="quarter != 5">
-                    <option>Offense</option>
-                    <option>Defense</option>
-                    <option>At Clock</option>
-                    <option>No Clock</option>
-                </select>
-            </div>
-            <div class="small" ng-click="nextQuarter()">
-                Quarter: {{ quarter }}
-            </div>
-        </div>
-        <div class="time" ng-show="timeEditor">
-            <div class="small">{{ timeDigits[3]}}{{ timeDigits[2]}}:{{ timeDigits[1]}}{{ timeDigits[0]}}</div>
-            <div class="small third" ng-click="timeDigits.unshift(1)">1</div>
-            <div class="small third" ng-click="timeDigits.unshift(2)">2</div>
-            <div class="small third" ng-click="timeDigits.unshift(3)">3</div>
-            <div class="small third" ng-click="timeDigits.unshift(4)">4</div>
-            <div class="small third" ng-click="timeDigits.unshift(5)">5</div>
-            <div class="small third" ng-click="timeDigits.unshift(6)">6</div>
-            <div class="small third" ng-click="timeDigits.unshift(7)">7</div>
-            <div class="small third" ng-click="timeDigits.unshift(8)">8</div>
-            <div class="small third" ng-click="timeDigits.unshift(9)">9</div>
-            <div class="small third" ng-click="timeDigits.unshift(0)">0</div>
-            <div class="smaller third" ng-click="timeDigits = [0, 0, 0, 0].concat(timeDigits)">Clear</div>
-            <div class="smaller third" ng-click="timeDigits.shift()">Back</div>
-        </div>
-        <script src="js/angular.js"></script>
-        <script src="js/gamecard.js"></script>
+            <script src="js/angular.js"></script>
+            <script src="js/gamecard.js"></script>
     </body>
 </html>

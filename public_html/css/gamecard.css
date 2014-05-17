@@ -31,7 +31,7 @@ div.small
 div.smaller
 {
     /*height: 4em;*/
-    border: solid 1px;
+    /*border: solid 1px;*/
     font-size: 3em;
     font-family: sans-serif;
     font-weight: bolder;
@@ -51,7 +51,6 @@ div.top
     position: absolute;
     top: 0;
     width: 99%;
-    font-size: 3em;
     height: 99%;
     background-color: white;
     text-align: center;
@@ -76,15 +75,11 @@ div.time
 }
 input[type="text"]
 {
-    font-size: 4em;
-}
-input[type="text"].smaller
-{
-    font-size: 3em;
+    font-size: 1em;
 }
 select
 {
-    font-size: 3em;
+    font-size: 1em;
 }
 table
 {
